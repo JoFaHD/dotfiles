@@ -1,0 +1,21 @@
+alias editrootzsh="nvim $HOME/.zshrc"
+alias editzsh="nvim $ZSH/.zshrc"
+alias editalias="nvim $ZSH/.zsh_aliases"
+alias editveo="nvim $HOME/.config/nvim"
+
+alias refresh="source $HOME/.zshrc"
+
+alias lsA="ls -A -s -l"
+alias lss="ls -A -s -h"
+
+alias fileex="nohup nautilus -s pwd &"
+# alias runsilent="nohup $1 &"
+
+alias boottime="systemd-analyze"
+
+# assemble_s () {
+#     tbr nasm -felf64 $1.s && ld $1.o -o $1
+# }
+# assemble_asm () {
+#     tbr nasm -felf64 $1.asm && ld $1.o -o $1
+# }
