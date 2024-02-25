@@ -16,11 +16,11 @@ export GOPATH=$HOME/go
 
 eval "$(starship init zsh)"
 
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 
 # Oh-my-zsh plugins:
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aliases zsh-you-should-use)
+plugins=(git aliases zsh-you-should-use  z)

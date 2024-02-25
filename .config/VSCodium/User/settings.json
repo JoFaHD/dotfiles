@@ -5,5 +5,8 @@
     "explorer.confirmDelete": false,
     "workbench.colorTheme": "Gruvbox Dark Soft",
     "editor.mouseWheelZoom": true,
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    }
 }

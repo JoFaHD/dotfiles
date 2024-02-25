@@ -13,6 +13,8 @@ alias fileex="nohup nautilus -s pwd &"
 
 alias boottime="systemd-analyze"
 
+alias ngrok="$HOME/Applications/ngrok/ngrok"
+
 # assemble_s () {
 #     tbr nasm -felf64 $1.s && ld $1.o -o $1
 # }
