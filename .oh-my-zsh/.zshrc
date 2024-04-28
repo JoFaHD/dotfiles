@@ -4,6 +4,7 @@ HISTSIZE=10000
 SAVEHIST=1000
 setopt extendedglob
 bindkey -v
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/var/home/shadespark/.zshrc'
@@ -15,8 +16,6 @@ compinit
 export GOPATH=$HOME/go
 
 eval "$(starship init zsh)"
-
-# eval "$(zoxide init zsh)"
 
 # Oh-my-zsh plugins:
 # Standard plugins can be found in $ZSH/plugins/

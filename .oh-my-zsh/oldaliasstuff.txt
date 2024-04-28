@@ -1,0 +1,33 @@
+alias fileex="nohup nautilus -s pwd &"
+alias runsilent="nohup $1 &"
+
+
+alias manim="sudo docker exec manim-container manim"
+
+alias manimcompile="sudo docker run --rm --name manim-temp-container --mount type=bind,source=/home/shadespark/Documents/CodeStuff/Manim/Docker/manim-container/,target=/manim/mountpoint manimcommunity/manim manim -qk mountpoint/$1 $2"
+
+manimcompile() {
+    sudo docker run --rm --name manim-temp-container --mount type=bind,source=/home/shadespark/Documents/CodeStuff/Manim/Code/,target=/manim/mountpoint manimcommunity/manim manim render -ql --mirror_module_path=False --output="/.../manim/output" mountpoint/"$1" "$2" 
+    sudo docker run --rm --name manim-temp-container -v manim:/Code manimcommunity/manim manim -qk "$1" "$2"
+    sudo docker run --rm --name manim-temp-container -v manim:/Code manimcommunity/manim ls -lA
+    && echo "Path to video: ~/Documents/CodeStuff/Manim/Docker/manim-container/"
+}
+
+# manimcompile startet einen container mit dem manim image
+# --rm macht das der container nach ausführung des commands wieder gelöscht wird
+# --mount hängt den Ordner ~/Documents/CodeStuff/Manim/Docker/manim-container im container unter ~/mountpoint ein 
+# => alle datein in diesem Ordner sind im container
+# Zweite Zeile: Diese Zeile wird im container ausgeführt
+# Es wird manim gerufen um ein script zu rendern
+# Qualität ist auf max also 2k eingestellt
+# Script liegt in mountpoint also im normalen system unter Docker/manim-container und wird also erstes Argument $1 reingegeben
+# Funktion die gerendert werden soll ist $2
+
+assemble_s () {
+    tbr nasm -felf64 $1.s && ld $1.o -o $1
+}
+assemble_asm () {
+    tbr nasm -felf64 $1.asm && ld $1.o -o $1
+}
+
+alias test="echo '1: $1 2: $2'"

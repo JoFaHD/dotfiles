@@ -1,23 +1,38 @@
 alias editrootzsh="nvim $HOME/.zshrc"
 alias editzsh="nvim $ZSH/.zshrc"
 alias editalias="nvim $ZSH/.zsh_aliases"
-alias editveo="nvim $HOME/.config/nvim"
+
+qeditnvim () {
+  startdir=`pwd` &&
+  cd $HOME/.config/nvim/ &&
+  nvim &&
+  cd "$startdir"
+}
+alias editnvim="cd $HOME/.config/nvim && nvim"
+
+alias editmux="nvim $HOME/.config/tmux/tmux.conf"
 
 alias refresh="source $HOME/.zshrc"
+alias txrefresh="tmux source $HOME/.config/tmux/tmux.conf"
 
-alias lsA="ls -A -s -l"
-alias lss="ls -A -s -h"
-
-alias fileex="nohup nautilus -s pwd &"
-# alias runsilent="nohup $1 &"
+alias lsl="eza -l --icons"
+alias lsa="eza -a -l -h --icons"
 
 alias boottime="systemd-analyze"
 
+alias trash="gio trash"
+alias open="gio open"
+
 alias ngrok="$HOME/Applications/ngrok/ngrok"
 
-# assemble_s () {
-#     tbr nasm -felf64 $1.s && ld $1.o -o $1
-# }
-# assemble_asm () {
-#     tbr nasm -felf64 $1.asm && ld $1.o -o $1
-# }
+# alias updateally="sudo dnf update -y && flatpak update -y"
+alias updateall=" sudo dnf update $1 && flatpak update $1"
+
+# Search for the SteamID of a game:
+steamid () {
+    find . -name 'appmanifest*' -type f -exec grep -H "$1" {} + |
+    grep 'name' |
+    sed "s/.*appmanifest_\\([0-9]*\\).*/$1: \\1/"
+}
+
+eval $(thefuck --alias)
