@@ -1,0 +1,66 @@
+alias editshell="$EDITOR $HOME/.$SHELLVAL\rc"
+alias editalias="$EDITOR $HOME/.$SHELLVAL\_aliases"
+
+editlabwc () {
+    startdir=`pwd` &&
+    cd $HOME/.config/labwc/ &&
+    $EDITOR && 
+    cd "$startdir"
+}
+
+editnvim () {
+    startdir=`pwd` &&
+    cd $HOME/.config/nvim/ &&
+    $EDITOR &&
+    cd "$startdir"
+}
+
+alias editmux="nvim $HOME/.config/tmux/tmux.conf"
+
+alias refresh="source $HOME/.$SHELLVAL\rc"
+alias txrefresh="tmux source $HOME/.config/tmux/tmux.conf"
+
+alias boottime="systemd-analyze"
+
+alias update=" \
+    sudo dnf update $1 && \
+    flatpak update $1 && \
+    sudo oh-my-posh upgrade && \
+    sudo auto-cpufreq --update"
+
+export EZAARGS="--icons --no-permissions --no-user --no-time --group-directories-first --git -M"
+alias ls="eza -l $EZAARGS"
+alias lsa="eza -A -l -h $EZAARGS"
+alias lsr="ls -T"                   # list recursively as a tree, arg -L for the level of depth
+alias lsra="ls -T -A"               # list all files recursively
+alias lsf="lsa -f -A"               # list only files
+alias lsd="lsa -D -A --total-size"  # list only directories
+alias lsas="lsa --total-size"
+
+alias rm="rm -i -d"         # -i prompts before removal | -d removes empty directories
+alias trash="gio trash"
+open() {
+    gio open "${1:-.}"      # Opens specified file or the current directory if none given
+}
+
+# move tmp files from Librewolf into Downloads
+alias mvtmp="mv /tmp/mozilla_jofathesofa0/* ~/Downloads/Browsers/" 
+
+alias fetch="fastfetch"
+
+# alias sshpi="kitten ssh raspberrypi.local"
+# alias sshk="kitten ssh"
+
+alias fzt="fzf-tmux --reverse"
+
+tips () {
+    tip_file=`ls $TIPSDIR/texttips/ --no-filesize --icons=never | fzf --height=~100 --reverse` &&
+    cat "$TIPSDIR/texttips/$tip_file"
+}
+
+webtips () {
+    tip_page=`cat $TIPSDIR/webtips.txt | fzf --height=~100 --reverse` &&
+    $BROWSER $tip_page
+}
+
+alias cdtips="cd $TTIPSDIR"
